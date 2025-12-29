@@ -1,53 +1,82 @@
-tdl — Telegram Downloader (quick setup)
+# 🚀 Telegram Smart Downloader
 
-This short guide shows how to install `tdl` (Windows) and download private Telegram media (videos) you have access to.
+An ultra-fast, interactive Telegram downloader powered by [TDL](https://github.com/iyear/tdl).  
+Easily download ranges of messages (PDFs, Videos, etc.) from private or public channels by simply pasting links.
 
-Prerequisites
-- A Telegram account that has access to the private chat/group containing the videos.
-- Windows PowerShell (you're using pwsh.exe).
+## ✨ Features
 
-Quick steps
-1. Download the `tdl` Windows release from the project's releases page:
-   https://github.com/iyear/tdl/releases/latest
-   Choose the matching `tdl_Windows_64bit.zip` (or 32bit/arm if needed) and save it.
+- **Interactive Menu**: No need to remember complex commands.
+- **Smart Link Detection**: Paste full Telegram links (e.g., `https://t.me/c/1234/100`), and it auto-extracts the ID.
+- **Bulk Downloading**: Download hundreds of files (documents, media) in one go by specifying a range (e.g., Msg 400 to 700).
+- **Organization**: Choose where to save your files or create new folders on the fly.
+- **Resumable**: Downloads are handled by `tdl` for maximum speed and reliability.
 
-2. Unzip the archive and put `tdl.exe` somewhere convenient (or use the included script).
+---
 
-3. Login (interactive):
-   - Run: `tdl login -T code` (enter your phone and code when prompted) — this creates an authenticated session.
-   - Or import Telegram Desktop session: `tdl login -T desktop -d "C:\Path\To\Telegram\tdata"`.
+## 🛠️ Installation
 
-4. Download a message link (one or more):
-   - Get message link from Telegram Desktop: Right-click message -> Copy Message Link (for private chats the link looks like `https://t.me/c/<chatid>/<messageid>`).
-   - Run: `tdl download -u "https://t.me/c/123456789/2345" -d "C:\path\to\downloads"`
-   - Useful flags:
-     - `--group` to auto-detect albums and download grouped entries.
-     - `--takeout` to use takeout sessions (lower floodwaits).
-     - `-t` / `-l` global flags control threads / concurrent tasks.
-     - `--desc` download newest first.
+1.  **Clone this repository**:
+    ```bash
+    git clone https://github.com/SONUKR321-hub/telegram-smart-downloader.git
+    cd telegram-smart-downloader
+    ```
 
-Notes & security
-- Bots cannot access private chats. You must login with a Telegram user session (the `tdl login` command creates it).
-- If your account has 2FA, you'll be prompted for the password during `tdl login`.
-- Sessions are stored per-namespace under the default data dir; protect that data.
-- For many files use `tdl download -f exported_file.json` to feed an official-client exported file (tdl supports that).
+2.  **Ensure you have Python installed**.
 
-If you'd like, I can create a small PowerShell script that automates downloading the latest Windows binary, extracts it, runs `tdl login` (interactive), then downloads a link you provide. Let me know if you want that and whether to place it in this workspace (I can create it for you).
+3.  **Setup TDL**:
+    - The repository includes a `tdl/bin/tdl.exe` (for Windows).
+    - If you are on Linux/Mac, [download the TDL binary](https://github.com/iyear/tdl/releases) and place it in the folder or update the path in the script.
 
-Python wrapper (non-interactive)
---------------------------------
-I added a small Python helper `tdl_downloader.py` in the workspace root. It wraps the `tdl.exe` binary and lets you:
+4.  **Login (First Time Only)**:
+    Before using the script, you must login to your Telegram account via TDL. Run this in your terminal:
+    ```powershell
+    .\tdl\bin\tdl.exe login
+    ```
+    Follow the prompts to enter your phone number and OTP code.
 
-- Provide one or more message links with `--link` (repeatable) or a file of links with `--file`.
-- Set output directory with `--out` (defaults to `./downloads`).
-- Optional flags: `--group`, `--takeout`, `--desc`.
-- `--login` will run interactive `tdl login -T code` before downloading.
-- `--check` runs `tdl version` to ensure `tdl.exe` is available.
+---
 
-Example:
+## 🚀 How to Run
 
-```
-python tdl_downloader.py --link "https://t.me/c/123456789/2345" --out "e:\\telegram\\downloads" --group
+Simply run the interactive Python script:
+
+```powershell
+python interactive_tdl.py
 ```
 
-The script tries to locate `tdl.exe` in these places (in order): `TDL_PATH` env var, `./tdl/bin/tdl.exe` inside this workspace, `./bin/tdl.exe`, or on your PATH.
+### 📋 The Menu
+
+Once started, you will see:
+
+```text
+=========================================
+       TELEGRAM DOWNLOADER APP          
+=========================================
+1. Download Individually (via Link)
+2. Download Range (ChatID + Start/End)
+3. Exit
+```
+
+### 🔹 Option 1: Download Single File
+- Paste the link to the file/message you want.
+- Select a folder to save it in.
+
+### 🔹 Option 2: Download Range (Best for courses/series)
+- **Chat ID**: Paste the chat link (e.g., `https://t.me/c/2732989224/411` or just `2732989224`).
+- **Start ID**: Paste the link of the *first* message (e.g., `.../411`).
+- **End ID**: Paste the link of the *last* message (e.g., `.../702`).
+- **Folder**: Create a new folder (e.g., "Physics Notes") or pick an existing one.
+
+The app will handle the rest! 🚀
+
+---
+
+## 📂 Project Structure
+
+- `interactive_tdl.py`: The main magic script. 🧙‍♂️
+- `tdl/`: Contains the core downloader engine.
+- `download_range.ps1`: (Optional) A quick PowerShell helper for advanced users.
+
+## 🤝 Contributing
+
+Feel free to open issues or submit pull requests to improve the tool!
