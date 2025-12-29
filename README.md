@@ -80,3 +80,8 @@ The app will handle the rest! 🚀
 ## 🤝 Contributing
 
 Feel free to open issues or submit pull requests to improve the tool!
+
+---
+<p align="center">
+  <b>Made with ❤️ by Kumar Sonu from MIT</b>
+</p>

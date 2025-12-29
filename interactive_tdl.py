@@ -171,6 +171,7 @@ def main():
         clear_screen()
         print("=========================================")
         print("       TELEGRAM DOWNLOADER APP          ")
+        print("   Made with ❤️  by Kumar Sonu from MIT   ")
         print("=========================================")
         print("1. Download Individually (via Link)")
         print("2. Download Range (ChatID + Start/End)")
