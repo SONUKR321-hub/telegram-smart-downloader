@@ -1,0 +1,26 @@
+A set of chat tools
+
+Usage:
+  tdl chat [command]
+
+Available Commands:
+  export                  export messages from (protected) chat for download
+  ls                      List your chats
+  users                   export users from (protected) channels
+
+Flags:
+  -h, --help   help for chat
+
+Global Flags:
+      --debug                        enable debug mode
+      --delay duration               delay between each task, zero means no delay
+  -l, --limit int                    max number of concurrent tasks (default 2)
+  -n, --ns string                    namespace for Telegram session (default "default")
+      --ntp string                   ntp server host, if not set, use system time
+      --pool int                     specify the size of the DC pool, zero means infinity (default 8)
+      --proxy string                 proxy address, format: protocol://username:password@host:port
+      --reconnect-timeout duration   Telegram client reconnection backoff timeout, infinite if set to 0 (default 5m0s)
+      --storage stringToString       storage options, format: type=driver,key1=value1,key2=value2. Available drivers: [legacy,bolt,file] (default [path=C:\Users\LENOVO\.tdl\data,type=bolt])
+  -t, --threads int                  max threads for transfer one item (default 4)
+
+Use "tdl chat [command] --help" for more information about a command.

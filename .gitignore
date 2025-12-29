@@ -1,0 +1,14 @@
+pdf notes/
+sigma 10/
+sigma 10++/
+RCC/
+testing/
+messages_*/
+downloads/
+*.pdf
+*.json
+*.tmp
+__pycache__/
+*.session
+# keep the tdl binary if the user wants it, but usually good to ignore. 
+# For now I will ignore the large downloads.
